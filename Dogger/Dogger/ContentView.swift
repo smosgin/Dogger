@@ -10,12 +10,26 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(.doggo)
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            LikeAndDislikeTray()
         }
         .padding()
+    }
+}
+
+struct LikeAndDislikeTray: View {
+    var body: some View {
+        HStack {
+            Button("Like") {
+                //perform the like action
+            }
+            Spacer()
+            Button("Dislike") {
+                //perform the dislike action
+            }
+        }
     }
 }
 
