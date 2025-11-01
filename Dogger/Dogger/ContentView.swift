@@ -8,26 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var imageId = UUID()
+    
+    @State var doggoImage = AsyncImage(url: URL(string: "https://place.dog/300/200"))
+    
     var body: some View {
         VStack {
-            Image(.doggo)
+            doggoImage
+                .id(imageId)
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            LikeAndDislikeTray()
+                .frame(width: 300, height: 200)
+            LikeAndDislikeTray(imageId: $imageId)
         }
         .padding()
     }
 }
 
 struct LikeAndDislikeTray: View {
+    @Binding var imageId: UUID
+    
     var body: some View {
         HStack {
             Button("Like") {
                 //perform the like action
+                
+                //refresh the image
+                imageId = UUID()
             }
             Spacer()
             Button("Dislike") {
                 //perform the dislike action
+                
+                //refresh the image
+                imageId = UUID()
             }
         }
     }
